@@ -14,6 +14,8 @@ This project aims at stabilising the performance of [BlueToolkit](https://github
 
 Also, the original research paper only considers examining Bluetooth vulnerabilities in automobile devices. This project strived to conduct the same vulnerability testing on various IT devices, including speakers and smartphones. 
 
+Project members: Hojune Kim (Undergraduate Intern at [KAIST CyPhy Lab](https://www.cyphy.kaist.ac.kr/))
+
 ## Debugging & Stabilising BlueToolkit
 
 The progress in debugging and stabilising the testing environment using BlueToolkit is documented under `progress_reports_eng/` (English) and `progress_reports_kor/` (Korean). The naming format is `{date}_Progress_Report.md` for the English version, and `{date}_진행현황.md` for the Korean version. This README briefly goes through key changes in the framework here, and the relevant details can be found in the progress reports.
@@ -56,5 +58,32 @@ Note that `btmon_feature_extractor.py` is run only once by `reconnect.sh`, when 
 
 ## Setting Up ESP32 for Braktooth
 
+Testing for Braktooth vulnerabilities requires an [ESP32-WROVER-KIT-VE (the link points at an online store listed in the official Braktooth github repository)](https://www.digikey.sg/en/products/detail/espressif-systems/ESP32-ETHERNET-KIT-VE/13414972).
 
 
+### Braktooth Setup
+
+The setup for Braktooth in BlueToolkit is partially automated by `braktooth_additional_install.sh`. Running the script led to several issues:
+
+- `wget https://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb` resulted in downloading `...ubuntu2_amd64.db`, not `...ubuntu2.20_amd64.db`. The installation script uses `...ubuntu2.20_amd64.db` for `dpkg` and `rm -f` commands, which fails since such file does not exist. These commands were fixed to correctly install and remove `...ubuntu2_amd64.db`.
+- Running `requirements2.sh` failed due to lack of `net/ipx.h` in Linux kernels >= 5.15. Braktooth requires the file for its [Wi-Fi AP Fuzzer](https://github.com/Matheus-Garbelini/braktooth_esp32_bluetooth_classic_attacks?tab=readme-ov-file#31-running-experimental-fuzzers). Since BlueToolkit only uses `bin/bt_exploiter` binary, this is not needed for the testing purposes; the relevant part in the installation script (`cd src/drivers/wifi/rtl8812au && make -j4`) was commented out:
+```bash
+...
+else
+	# Minimal Ubuntu Packages to run binary WDissector and Wireshark distribution
+	sudo apt install g++ libglib2.0-dev  libqt5multimedia5 libsnappy1v5 libsmi2ldbl libc-ares2 libnl-route-3-200 \
+	libfreetype6 graphviz libtbb-dev libxss1 libnss3 libspandsp2 libsbc1 libbrotli1 libnghttp2-14 libasound2 psmisc sshpass \
+	libpulse0 libasound2 libpcre2-dev -y
+	# Wi-Fi requirements
+	sudo apt install dnsmasq net-tools iptables linux-headers-$(uname -r) -y
+	sudo cp src/drivers/wifi/rtl8812au/85-nm-unmanaged.rules /etc/udev/rules.d/85-nm-unmanaged.rules
+	sudo udevadm control --reload-rules && udevadm trigger
+	# cd src/drivers/wifi/rtl8812au/
+	# make -j4
+
+	# Evaluation packages
+	sudo python3 -m pip install numpy pandas python-pcapng==1.0 matplotlib
+	sudo apt install expect-dev
+fi
+...
+```
