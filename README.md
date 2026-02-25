@@ -6,7 +6,7 @@
 
 [2. Debugging & Stabilising BlueToolkit](#debugging--stabilising-bluetoolkit)
 
-[3. Setting Up ESP32 for Braktooth](#setting-up-esp32-for-braktooth)
+[3. Setting Up ESP32 for Braktooth](#setting-up--running-esp32-for-braktooth)
 
 ## Purpose
 
@@ -56,10 +56,9 @@ Note that `btmon_feature_extractor.py` is run only once by `reconnect.sh`, when 
 
 ---
 
-## Setting Up ESP32 for Braktooth
+## Setting Up & Running ESP32 for Braktooth
 
 Testing for Braktooth vulnerabilities requires an [ESP32-WROVER-KIT-VE (the link points at an online store listed in the official Braktooth github repository)](https://www.digikey.sg/en/products/detail/espressif-systems/ESP32-ETHERNET-KIT-VE/13414972).
-
 
 ### Braktooth Setup
 
@@ -87,3 +86,16 @@ else
 fi
 ...
 ```
+
+---
+
+## Setting Up & Running Nexus 5 for Internalblue
+
+Firstly, set up a Nexus 5 phone by following the [instructions](https://github.com/seemoo-lab/internalblue/tree/master/doc/android.md)
+
+Then, running `adb devices` will result in the device showing up on the list. Then, run the following commands to install BluetoothAssitant:
+```bash
+chmod +x /usr/share/Btoolkit/installation/bluetoothassistant_additional_install.sh
+/usr/share/Btoolkit/installation/bluetoothassistant_additional_install.sh
+```
+The ESP32 Setup & Run is in progress as of Feb 25, 2026. Hence, the functionality of `bluetoothassistant_additional_install.sh` has not yet been evaluated.
