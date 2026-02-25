@@ -1,5 +1,13 @@
 # BlueToolkit_CyPhy
 
+## Table of Contents
+
+[1. Purpose](#purpose)
+
+[2. Debugging & Stabilising BlueToolkit](#debugging--stabilising-bluetoolkit)
+
+[3. Setting Up ESP32 for Braktooth](#setting-up-esp32-for-braktooth)
+
 ## Purpose
 
 This project aims at stabilising the performance of [BlueToolkit](https://github.com/sgxgsx/BlueToolkit), an extensible Bluetooth Classic vulnerability testing framework. 
@@ -45,5 +53,8 @@ This problem was resolved in two different ways for Ubuntu 22.04 and 24.04:
 Note that `btmon_feature_extractor.py` is run only once by `reconnect.sh`, when there is no `bluing_lmp.log` (LMP feature info) for the target device (this is the case when it is the first time connecting to the device using BlueToolkit).
 
 ---
+
+## Setting Up ESP32 for Braktooth
+
 
 
