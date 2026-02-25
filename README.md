@@ -1,12 +1,16 @@
 # BlueToolkit_CyPhy
 
-## Table of Contents
+- [BlueToolkit\_CyPhy](#bluetoolkit_cyphy)
+	- [Purpose](#purpose)
+	- [Debugging \& Stabilising BlueToolkit](#debugging--stabilising-bluetoolkit)
+		- [BlueToolkit Stabilisation - Automated](#bluetoolkit-stabilisation---automated)
+		- [`reconnect.sh`](#reconnectsh)
+		- [`bluekit_nino_check.py`](#bluekit_nino_checkpy)
+		- [`btmon_feature_extractor.py`](#btmon_feature_extractorpy)
+	- [Setting Up \& Running ESP32 for Braktooth](#setting-up--running-esp32-for-braktooth)
+		- [Braktooth Setup](#braktooth-setup)
+	- [Setting Up \& Running Nexus 5 for Internalblue](#setting-up--running-nexus-5-for-internalblue)
 
-[1. Purpose](#purpose)
-
-[2. Debugging & Stabilising BlueToolkit](#debugging--stabilising-bluetoolkit)
-
-[3. Setting Up ESP32 for Braktooth](#setting-up--running-esp32-for-braktooth)
 
 ## Purpose
 
@@ -22,7 +26,9 @@ The progress in debugging and stabilising the testing environment using BlueTool
 
 Please note that the project had started off by using Ubuntu 24.04, which was then downgraded to 22.04 for ensuring compatibility with Braktooth later on.
 
-As of {last_commit_date}, you can run the following commands if you would like to apply the same changes on your local BlueToolkit as this project. The script should be run in this repository's root directory. Note that this project's environment is Ubuntu 22.04 with the kernel version of 6.8.0-100-generic.
+### BlueToolkit Stabilisation - Automated
+
+As of Feb 25, 2026, you can run the following commands if you would like to apply the same changes on your local BlueToolkit as this project. The script should be run in this repository's root directory. Note that this project's environment is Ubuntu 22.04 with the kernel version of 6.8.0-100-generic.
 ```bash
 chmod +x update_bluetoolkit.sh
 sudo ./update_bluetoolkit.sh
