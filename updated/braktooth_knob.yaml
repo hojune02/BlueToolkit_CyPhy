@@ -1,0 +1,26 @@
+
+name: "braktooth_knob" 
+author: "Braktooth team"
+type: "PoC"
+mass_testing: true
+max_timeout: 120
+bt_version_min: 2.0
+bt_version_max: 5.4
+hardware: "esp32"
+command: "python3 bluekit_knob.py"
+parameters:
+  - name: "--target" 
+    type: "str"
+    name_required: true
+    help: "Target MAC address"
+    required: true
+    is_target_param: true
+    parameter_connector: " "
+log_pull:
+  in_command: false
+  from_directory: true
+  relative_directory: true
+  pull_directory: "modules/tools/braktooth/wdissector/logs/Bluetooth" 
+directory:
+  change: true
+  directory: "modules/tools/custom_exploits"
