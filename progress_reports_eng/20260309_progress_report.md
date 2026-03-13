@@ -44,3 +44,6 @@ After applying all changes, `sudo bluekit -t 64:7B:CE:BD:A5:2B -e braktooth_knob
       "code": 2,
       "data": "KNOB Detected - Device accepted reduced encryption key size"
 }
+```
+
+### Galaxy Note10+ 5G - 64:7B:CE:BD:A5:2B
