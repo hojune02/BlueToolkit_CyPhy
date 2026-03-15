@@ -26,14 +26,6 @@ The progress in debugging and stabilising the testing environment using BlueTool
 
 Please note that the project had started off by using Ubuntu 24.04, which was then downgraded to 22.04 for ensuring compatibility with Braktooth later on.
 
-### BlueToolkit Stabilisation - Automated
-
-As of Feb 25, 2026, you can run the following commands if you would like to apply the same changes on your local BlueToolkit as this project. The script should be run in this repository's root directory. Note that this project's environment is Ubuntu 22.04 with the kernel version of 6.8.0-100-generic.
-```bash
-chmod +x update_bluetoolkit.sh
-sudo ./update_bluetoolkit.sh
-```
-
 ### `reconnect.sh`
 
 `reconnect.sh` is used for checking connectivity to the target device. The original `reconnect.sh` from the BlueToolkit repository has the following features:
