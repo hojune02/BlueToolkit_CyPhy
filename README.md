@@ -49,11 +49,16 @@ For `bluetoothctl pair`, observations on target devices showed that if they have
 
 `bluekit_nino_check_2404.py` was used before downgrading the Ubuntu version to 22.04, and hence deprecated for the project. It was uploaded onto the repository for archiving purposes.
 
-### `btmon_feature_extractor.py`
+### `bluekit_knob.py`
+
+Testing for `braktooth_knob` vulnerability was not parsing the result from running `bt_exploiter` correctly. I fixed the YAML file to use the wrapper Python file (`bluekit_knob.py`) for testing, and fixed the parsing logic inside the program.
+
+<details>
+<summary><h3><code>btmon_feature_extractor.py</code></h3></summary>
 
 **As of Mar 15, 2026, the official BlueToolkit repository released a new version where `bluing` dependency is resolved. Please refer to the [official repository](https://github.com/sgxgsx/BlueToolkit) if you do not wish to apply my personal fix for this issue.**
 
-`bluing` is used by BlueToolkit for collecting LMP (Link Management Protocol) features. One critical issue faced during the project setup was that `bluing` dependency is no longer open-source and available for use. 
+`bluing` is used by BlueToolkit for collecting LMP (Link Management Protocol) features. One critical issue faced during the project setup was that `bluing` dependency is no longer open-source and available for use.
 
 This problem was resolved in two different ways for Ubuntu 22.04 and 24.04:
 
@@ -61,6 +66,8 @@ This problem was resolved in two different ways for Ubuntu 22.04 and 24.04:
 - In Ubuntu 24.04, `sudo btmon` command reliably lists out all the LMP features of the target device. The LMP features fetched by `btmon` was parsed to create `bluing_lmp.log` for the target device.
 
 Note that `btmon_feature_extractor.py` is run only once by `reconnect.sh`, when there is no `bluing_lmp.log` (LMP feature info) for the target device (this is the case when it is the first time connecting to the device using BlueToolkit).
+
+</details>
 
 ---
 
