@@ -24,7 +24,7 @@ Project members: Hojune Kim (Undergraduate Intern at [KAIST CyPhy Lab](https://w
 
 The progress in debugging and stabilising the testing environment using BlueToolkit is documented under `progress_reports_eng/` (English) and `progress_reports_kor/` (Korean). The naming format is `{date}_Progress_Report.md` for the English version, and `{date}_진행현황.md` for the Korean version. This README briefly goes through key changes in the framework here, and the relevant details can be found in the progress reports.
 
-***Please find the fixed version of BlueToolkit on this [separate repository](https://github.com/hojune02/BlueToolkit_fixed_code). You can also look at the changed code in the ['updated' folder](updated/)***
+***Please find the fixed version of BlueToolkit on this [separate repository](https://github.com/hojune02/BlueToolkit_fixed_code). You can also look at the changed & added programs in the ['updated' folder](updated/).***
 
 Please note that the project had started off by using Ubuntu 24.04, which was then downgraded to 22.04 for ensuring compatibility with Braktooth later on.
 
